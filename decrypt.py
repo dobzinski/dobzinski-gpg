@@ -1,6 +1,6 @@
 from main import *
 
-def crypto(path):
+def decrypt(path):
   directory = os.fsencode(path)
   for file in os.listdir(directory):
     d = os.fsdecode(directory)
@@ -11,8 +11,8 @@ def crypto(path):
         subprocess.run(["./script/control.sh", "out", iniPassphrase, dirFile])
     elif os.path.isdir(dirFile):
         if (recursive == True):
-          crypto(dirFile+"/")
+          decrypt(dirFile+"/")
 
 for f in folders:
   f = f.strip()
-  crypto(f)
+  decrypt(f)
